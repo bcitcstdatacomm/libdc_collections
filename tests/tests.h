@@ -5,4 +5,7 @@
 #include <cgreen/cgreen.h>
 
 
+TestSuite *linked_list_tests(void);
+
+
 #endif // LIBDC_POSIX_TESTS_H

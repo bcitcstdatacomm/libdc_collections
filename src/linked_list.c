@@ -61,7 +61,8 @@ static void check_list(const struct dc_env *env, struct dc_error *err, const str
             DC_ERROR_RAISE_SYSTEM(err, "", 3);
             return;
         }
-        else if(list->tail != NULL)
+
+        if(list->tail != NULL)
         {
             DC_ERROR_RAISE_SYSTEM(err, "", 4);
             return;
@@ -88,7 +89,8 @@ static void check_list(const struct dc_env *env, struct dc_error *err, const str
                 DC_ERROR_RAISE_SYSTEM(err, "", 7);
                 return;
             }
-            else if(list->head != list->tail)
+
+            if(list->head != list->tail)
             {
                 DC_ERROR_RAISE_SYSTEM(err, "", 8);
                 return;
@@ -101,22 +103,26 @@ static void check_list(const struct dc_env *env, struct dc_error *err, const str
                 DC_ERROR_RAISE_SYSTEM(err, "", 9);
                 return;
             }
-            else if(list->tail == NULL)
+
+            if(list->tail == NULL)
             {
                 DC_ERROR_RAISE_SYSTEM(err, "", 10);
                 return;
             }
-            else if(list->head != list->tail)
+
+            if(list->head != list->tail)
             {
                 DC_ERROR_RAISE_SYSTEM(err, "", 11);
                 return;
             }
-            else if(list->head->next == NULL)
+
+            if(list->head->next == NULL)
             {
                 DC_ERROR_RAISE_SYSTEM(err, "", 12);
                 return;
             }
-            else if(list->tail->prev == NULL)
+
+            if(list->tail->prev == NULL)
             {
                 DC_ERROR_RAISE_SYSTEM(err, "", 13);
                 return;
@@ -398,6 +404,13 @@ struct dc_linked_list_item dc_linked_list_get_last(const struct dc_env *env, con
 
 struct dc_linked_list_item dc_linked_list_get_at(const struct dc_env *env, const struct dc_linked_list *list, size_t index)
 {
+    struct node *node;
+    struct dc_linked_list_item item;
+
+    node = get_node_at(env, list->head, index);
+    item.index = (ssize_t)index;
+    item.data = node->data;
+
     DC_TRACE(env);
 }
 

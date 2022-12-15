@@ -93,7 +93,8 @@ list(APPEND COMPILER_FLAGS
         "-Wformat-overflow=2"
         "-Wformat-signedness"
         "-Wjump-misses-init"
-        "-Wformat-truncation=2")
+        "-Wformat-truncation=2"
+        )
 
 if (${SANITIZE})
     list(APPEND COMPILER_FLAGS

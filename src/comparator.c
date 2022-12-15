@@ -24,5 +24,5 @@ int dc_string_comparator(const struct dc_env *env, const void *item_a, const voi
     const char *str_a = item_a;
     const char *str_b = item_b;
 
-    return dc_strcmp(env, item_a, item_b);
+    return dc_strcmp(env, str_a, str_b);
 }

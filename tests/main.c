@@ -10,6 +10,8 @@ int main(int argc, char **argv)
     suite = create_test_suite();
     reporter = create_text_reporter();
 
+    add_suite(suite, linked_list_tests());
+
     if(argc > 1)
     {
         suite_result = run_single_test(suite, argv[1], reporter);

@@ -3,6 +3,7 @@ set(TEST_HEADER_LIST
         )
 
 set(TEST_SOURCE_LIST
+        linked_list_tests.c
         main.c
         )
 
