@@ -38,3 +38,4 @@ int dc_string_comparator(const struct dc_env *env, const void *item_a, const voi
 
 
 #endif // LIBDC_COLLECTIONS_COMPARATOR_H
+

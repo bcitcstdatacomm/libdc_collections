@@ -38,6 +38,7 @@ static void check_list(const struct dc_env *env, struct dc_error *err, const str
 static struct node *get_node_at(const struct dc_env *env, const struct node *start, size_t index);
 static struct node *get_node_with(const struct dc_env *env, const struct node *start, void *item, dc_comparator comparator);
 
+// NOLINTBEGIN(readability-function-cognitive-complexity)
 static void check_list(const struct dc_env *env, struct dc_error *err, const struct dc_linked_list *list, size_t number_of_elements)
 {
     DC_TRACE(env);
@@ -130,6 +131,7 @@ static void check_list(const struct dc_env *env, struct dc_error *err, const str
         }
     }
 }
+// NOLINTEND(readability-function-cognitive-complexity)
 
 static struct node *get_node_at(const struct dc_env *env, const struct node *start, size_t index)
 {
@@ -267,6 +269,7 @@ bool dc_linked_list_add_at(const struct dc_env *env, struct dc_error *err, struc
     if(index > number_of_elements)
     {
         DC_ERROR_RAISE_SYSTEM(err, "", 1);
+        ret_val = false;
     }
     else
     {
@@ -312,6 +315,10 @@ bool dc_linked_list_add_at(const struct dc_env *env, struct dc_error *err, struc
             }
 
             list->number_of_elements++;
+            ret_val = true;
+        }
+        else
+        {
             ret_val = true;
         }
     }
@@ -412,6 +419,8 @@ struct dc_linked_list_item dc_linked_list_get_at(const struct dc_env *env, const
     item.data = node->data;
 
     DC_TRACE(env);
+
+    return item;
 }
 
 struct dc_linked_list_item dc_linked_list_get_first_occurrence(const struct dc_env *env, const struct dc_linked_list *list, const void *item)
